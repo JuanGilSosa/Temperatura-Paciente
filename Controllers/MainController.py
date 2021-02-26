@@ -32,7 +32,27 @@ def start():
             dao_termometro.add(persona, termometro.temperatura, termometro.fecha)
 
             system('cls')
+
         elif op == 2:
+            system('cls')
+            print('******************CARGA AL SISTEMA******************')
+            name = input('| Ingrese nombre.................: ')
+            temp = input('| Ingrese temperatura corporal...: ')
+            temp = temp + '°'
+            hora = input('| Ingrese la hora (HH-MM-SS).....: ')
+
+            persona = Persona(name)
+            if not dao_persona.exists(persona.nombre):
+                dao_persona.add(persona)
+
+            persona.id = dao_persona.get_id_by_name(persona.nombre)
+
+            termometro = Termometro(temp, time.strftime("%x") + " | " + hora, persona.id)
+            dao_termometro.add(persona, termometro.temperatura, termometro.fecha)
+
+            system('cls')
+
+        elif op == 3:
             system('cls')
             name = input('| Ingrese nombre.................: ')
             if not dao_persona.exists(name):
