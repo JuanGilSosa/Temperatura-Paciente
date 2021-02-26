@@ -13,7 +13,7 @@ dao_termometro = TermometroDAO()
 
 def start():
     op = 1
-    while op in [1, 2]:
+    while op in [1, 2, 3]:
         op = Menu.menu()
         if op == 1:
             system('cls')
